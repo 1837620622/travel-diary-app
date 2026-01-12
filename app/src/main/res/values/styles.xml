@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 应用主题 -->
+    <style name="Theme.TrailDiary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 颜色 -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- 文字 -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+
+        <!-- 状态栏 -->
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- 导航栏 -->
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+
+        <!-- 窗口背景 -->
+        <item name="android:windowBackground">@color/gray_50</item>
+
+        <!-- 控件样式 -->
+        <item name="buttonStyle">@style/Widget.TrailDiary.Button</item>
+        <item name="editTextStyle">@style/Widget.TrailDiary.EditText</item>
+        <item name="textInputStyle">@style/Widget.TrailDiary.TextInputLayout</item>
+    </style>
+
+    <!-- 引导页主题 -->
+    <style name="Theme.TrailDiary.Splash" parent="Theme.TrailDiary">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 登录页主题 -->
+    <style name="Theme.TrailDiary.Login" parent="Theme.TrailDiary">
+        <item name="android:windowBackground">@color/paper_texture</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!-- 对话框主题 -->
+    <style name="Theme.TrailDiary.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <!-- 按钮样式 -->
+    <style name="Widget.TrailDiary.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="cornerRadius">@dimen/corner_radius_medium</item>
+        <item name="android:elevation">@dimen/elevation_small</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- 主要按钮样式 -->
+    <style name="Button.TrailDiary" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:background">@drawable/selector_button</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- 边框按钮样式 -->
+    <style name="Button.TrailDiary.Border" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:background">@drawable/bg_button_border</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- 文本输入框样式 -->
+    <style name="Widget.TrailDiary.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:minHeight">@dimen/input_height</item>
+    </style>
+
+    <!-- 圆角输入框样式 -->
+    <style name="EditText.TrailDiary" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+
+    <!-- TextInputLayout样式 -->
+    <style name="Widget.TrailDiary.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_medium</item>
+        <item name="boxStrokeColor">@color/border_color</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="hintTextColor">@color/text_hint</item>
+    </style>
+
+    <!-- 标题文本样式 -->
+    <style name="TextAppearance.TrailDiary.Headline">
+        <item name="android:textSize">@dimen/text_size_headline</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.TrailDiary.Title">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.TrailDiary.Subtitle">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.TrailDiary.Body">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.TrailDiary.Caption">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- 卡片样式 -->
+    <style name="CardView.TrailDiary" parent="CardView">
+        <item name="cardCornerRadius">@dimen/corner_radius_medium</item>
+        <item name="cardElevation">@dimen/elevation_small</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+    <!-- 分隔线样式 -->
+    <style name="Divider.TrailDiary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/border_color</item>
+    </style>
+
+    <!-- 工具栏样式 -->
+    <style name="Toolbar.TrailDiary" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.TrailDiary.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.TrailDiary.Subtitle</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">@dimen/elevation_small</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <!-- 底部导航样式 -->
+    <style name="BottomNavigation.TrailDiary" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/selector_bottom_nav</item>
+        <item name="itemTextColor">@color/selector_bottom_nav</item>
+        <item name="itemBackground">@color/white</item>
+        <item name="android:elevation">@dimen/elevation_medium</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!-- 对话框样式 -->
+    <style name="Dialog.TrailDiary" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButton.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButton.Negative</item>
+    </style>
+
+    <style name="DialogButton.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+    </style>
+
+    <style name="DialogButton.Negative" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:padding">@dimen/padding_medium</item>
+    </style>
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <!-- 分割线颜色，可替换为项目已有的颜色值（如@color/gray_light） -->
+        <item name="android:background">#E0E0E0</item>
+    </style>
+
+    <!-- 解决 TextAppearance.TrailDiary 缺失问题（文本外观样式，按需调整） -->
+    <style name="TextAppearance.TrailDiary" parent="TextAppearance.AppCompat">
+        <!-- 文本大小 -->
+        <item name="android:textSize">16sp</item>
+        <!-- 文本颜色，替换为项目已有的颜色值（如@color/primary_text） -->
+        <item name="android:textColor">@color/primary_text</item>
+        <!-- 文本样式（正常/粗体/斜体） -->
+        <item name="android:textStyle">normal</item>
+        <!-- 字体（可选） -->
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+</resources>

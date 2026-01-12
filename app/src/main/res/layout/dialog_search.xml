@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_edittext"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium">
+
+        <!-- 搜索图标 -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:src="@drawable/ic_search"
+            app:tint="@color/text_hint" />
+
+        <!-- 搜索输入框 -->
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textAppearance="@style/TextAppearance.TrailDiary.Body" />
+
+        <!-- 清除按钮 -->
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_small"
+            android:src="@drawable/ic_clear"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- 保留原始代码：搜索类型选择RadioGroup -->
+    <RadioGroup
+        android:id="@+id/rg_search_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rb_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="按标题"
+            android:checked="true"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/rb_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="按作者"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/rb_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="按类别"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <!-- 保留原始代码：搜索/取消按钮区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="搜索"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_button"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="取消"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/bg_button_border"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- 整合第二段代码：搜索结果区域（新增结果标题，替换为增强版列表和空状态） -->
+    <!-- 搜索结果标题 -->
+    <TextView
+        android:id="@+id/tv_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/search_result"
+        android:textAppearance="@style/TextAppearance.TrailDiary.Subtitle"
+        android:visibility="gone" />
+
+    <!-- 搜索结果列表（替换原始RecyclerView，保留布局权重以适配剩余高度） -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:nestedScrollingEnabled="false"
+        android:visibility="gone" />
+
+    <!-- 增强版空状态布局（替换原始简单文本提示） -->
+    <LinearLayout
+        android:id="@+id/ll_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:src="@drawable/ic_search"
+            app:tint="@color/text_hint" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_empty"
+            android:textAppearance="@style/TextAppearance.TrailDiary.Body"
+            android:textColor="@color/text_secondary" />
+
+    </LinearLayout>
+
+    <!-- 整合第二段代码：搜索历史区域（替换原始列表为流式Flexbox布局） -->
+    <LinearLayout
+        android:id="@+id/layout_search_history"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!-- 最近搜索标题（替换原始标题，使用第二段样式） -->
+        <TextView
+            android:id="@+id/tv_recent_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/recent_search"
+            android:textAppearance="@style/TextAppearance.TrailDiary.Caption"
+            android:textColor="@color/text_secondary"
+            android:visibility="gone" />
+
+        <!-- 流式历史标签容器 -->
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexbox_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            app:alignItems="flex_start"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start" />
+
+        <!-- 无搜索历史提示 -->
+        <TextView
+            android:id="@+id/tv_no_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暂无搜索历史"
+            android:textColor="@color/text_hint"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:padding="48dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

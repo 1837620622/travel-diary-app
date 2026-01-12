@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- 权限声明（保留所有原有权限，无冗余重复） -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- 新增：相机功能特性声明（非必需，兼容无相机设备） -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TrailDiary"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.UserAgreementActivity"
+            android:exported="false" /> <!-- 所有原有Activity声明完整保留 -->
+        <activity
+            android:name=".activity.NotebookSettingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary" />
+        <activity
+            android:name=".activity.NotebookDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary" />
+        <activity
+            android:name=".activity.DiaryDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary" />
+        <activity
+            android:name=".activity.WriteDiaryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary"
+            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 修正：FileProvider配置（将meta-data嵌套在provider内部，符合Android规范） -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.ProfileEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary" />
+        <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TrailDiary.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginRegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary.Login" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TrailDiary"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

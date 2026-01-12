@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 应用信息 -->
+    <string name="app_name">途迹</string>
+    <string name="app_slogan">山川为印，时光为笔</string>
+
+    <!-- 引导页 -->
+    <string name="splash_text">山川为印，时光为笔。这里是你珍藏每一次出发的私人天地。\n       我们深知个人信息对您的重要性途迹坚决保障您的隐私信息安全。未经您的同意，我们不会向第三方公司提供。\n     请在使用途迹前仔细阅读《用户协议》和《隐私政策》，当您选择【同意并进入】即代表您已充分阅读、理解并接受前述全部内容。若不同意将无法使用我们的产品和服务。我们将严格按照前述政策，为您提供更好的服务。\n		为了向您提供优质服务，我们会申请以下权限。\n		•手机信息权限：获取手机设备信息（设备硬件序列号（SN）、ANDROID ID、IMEI、SUPI、SUCI、MAC地址、SD卡数据、OAID、已安装应用列表（已安装应用信息/应用列表）、SSID），用于统计分析和错误处理。\n		• 存储权限：用于安全保存你日记中的照片与文件。\n		• 通知权限：为你推送行程提醒或备份完成通知。</string>
+
+    <!-- 登录注册 -->
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="phone_number">手机号</string>
+    <string name="trail_number">途迹号</string>
+    <string name="nickname">昵称</string>
+    <string name="signature">签名</string>
+    <string name="gender">性别</string>
+    <string name="birthday">生日</string>
+    <string name="constellation">星座</string>
+    <string name="default_signature">山川为印，时光为笔。</string>
+    <string name="forgot_password">忘记密码</string>
+    <string name="auto_login">自动登录</string>
+    <string name="have_account">已有账号？去登录</string>
+    <string name="no_account">没有账号？去注册</string>
+
+    <!-- 首页 -->
+    <string name="home">首页</string>
+    <string name="diary">日记</string>
+    <string name="notebook">日记本</string>
+    <string name="mine">我的</string>
+    <string name="all">全部</string>
+    <string name="count_template">%1$d</string>
+    <string name="diary_count">日记数</string>
+    <string name="notebook_count">日记本数</string>
+
+    <!-- 个人资料 -->
+    <string name="profile">个人资料</string>
+    <string name="edit_profile">编辑资料</string>
+    <string name="logout">退出登录</string>
+    <string name="resident_archive">途迹星球居民档案</string>
+
+    <!-- 日记相关 -->
+    <string name="new_diary">新建日记</string>
+    <string name="edit_diary">编辑日记</string>
+    <string name="delete_diary">删除日记</string>
+    <string name="save_diary">保存日记</string>
+    <string name="draft">草稿箱</string>
+    <string name="diary_title">日记标题</string>
+    <string name="diary_content">日记内容</string>
+    <string name="category">分类</string>
+    <string name="domestic_travel">国内游</string>
+    <string name="international_travel">国际游</string>
+    <string name="family_travel">亲子游</string>
+    <string name="food_travel">美食之旅</string>
+    <string name="photo">照片</string>
+    <string name="edit_time">编辑于 %1$s</string>
+    <string name="no_diary_in_notebook">这个日记本里还没有作品！</string>
+    <string name="go_create">去创作一篇吧～</string>
+    <string name="save_draft_prompt">是否暂存作品到草稿箱？</string>
+    <string name="dont_save">不了</string>
+    <string name="save">保存</string>
+    <string name="restore_draft_prompt">是否基于上次存储在草稿箱里的继续写？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="diary_title_hint">请输入日记标题</string>
+    <!-- 新增：日记菜单 -->
+    <string name="menu_edit">编辑笔记</string>
+    <string name="menu_delete">删除笔记</string>
+
+    <!-- 日记本相关 -->
+    <string name="my_notebook">我的日记本</string>
+    <string name="total_diaries">共 %1$d 篇</string>
+    <string name="new_notebook">新建日记本</string>
+    <string name="edit_notebook">编辑日记本</string>
+    <string name="delete_notebook">删除日记本</string>
+    <string name="sort_notebook">排序日记本</string>
+    <string name="notebook_name">日记本名称</string>
+    <string name="cover">封面</string>
+
+    <!-- 搜索 -->
+    <string name="search">搜索</string>
+    <string name="search_hint">请输入日记作者、类别或标题</string>
+    <string name="recent_searches">最近搜索</string>
+    <string name="cancel">取消</string>
+    <string name="clear_all">清空所有</string>
+    <!-- 新增：搜索对话框补充 -->
+    <string name="recent_search">最近搜索</string>
+    <string name="search_result">搜索结果</string>
+    <string name="search_empty">未找到相关日记</string>
+
+    <!-- 设置 -->
+    <string name="settings">设置</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="user_agreement">用户协议</string>
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="feedback">反馈</string>
+
+    <!-- 按钮 -->
+    <string name="confirm">确定</string>
+    <string name="cancel_uppercase">取消</string>
+    <string name="save_uppercase">保存</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="back">返回</string>
+    <string name="next">下一步</string>
+    <string name="done">完成</string>
+
+    <!-- 新增：确认对话框 -->
+    <string name="confirm_title">提示</string>
+    <string name="confirm_message">确认执行此操作吗？</string>
+
+    <!-- 提示信息 -->
+    <string name="loading">加载中...</string>
+    <string name="no_data">暂无数据</string>
+    <string name="network_error">网络连接失败</string>
+    <string name="server_error">服务器错误</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="register_success">注册成功</string>
+    <string name="register_failed">注册失败</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_failed">保存失败</string>
+    <string name="delete_success">删除成功</string>
+    <string name="delete_failed">删除失败</string>
+    <string name="field_required">该字段不能为空</string>
+    <string name="invalid_format">格式不正确</string>
+    <string name="password_mismatch">两次输入的密码不一致</string>
+    <string name="username_exists">用户名已存在</string>
+    <string name="trail_number_exists">途迹号已存在</string>
+    <string name="invalid_phone">手机号格式不正确</string>
+
+    <!-- 权限提示 -->
+    <string name="location_permission_desc">需要位置权限来记录您的旅行轨迹</string>
+    <string name="storage_permission_desc">需要存储权限来保存照片和文件</string>
+    <string name="camera_permission_desc">需要相机权限来拍摄照片</string>
+
+    <!-- 日期格式 -->
+    <string name="date_format_full">yyyy年MM月dd日 HH:mm:ss</string>
+    <string name="date_format_short">yyyy年MM月dd日</string>
+    <string name="date_format_month_day">MM月dd日</string>
+    <string name="time_format">HH:mm</string>
+
+    <!-- 星座 -->
+    <string-array name="constellations">
+        <item>白羊座</item>
+        <item>金牛座</item>
+        <item>双子座</item>
+        <item>巨蟹座</item>
+        <item>狮子座</item>
+        <item>处女座</item>
+        <item>天秤座</item>
+        <item>天蝎座</item>
+        <item>射手座</item>
+        <item>摩羯座</item>
+        <item>水瓶座</item>
+        <item>双鱼座</item>
+    </string-array>
+</resources>

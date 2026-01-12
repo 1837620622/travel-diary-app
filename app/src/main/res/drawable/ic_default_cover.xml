@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认封面 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="200"
+    android:viewportHeight="150">
+
+    <!-- 背景 -->
+    <rect
+        android:width="200dp"
+        android:height="150dp"
+        android:fillColor="@color/primary_light" />
+
+    <!-- 山脉形状 -->
+    <path
+        android:fillColor="@color/white"
+        android:fillAlpha="0.3"
+        android:pathData="M0,150 L50,50 L100,100 L150,30 L200,150 Z" />
+
+    <!-- 太阳 -->
+    <circle
+        cx="160"
+        cy="30"
+        r="15"
+        android:fillColor="@color/white"
+        android:fillAlpha="0.5" />
+
+    <!-- 标题区域 -->
+    <rect
+        x="50"
+        y="80"
+        android:width="100dp"
+        android:height="40dp"
+        android:fillColor="@color/white"
+        android:fillAlpha="0.8"
+        rx="5" />
+
+    <!-- 装饰线条 -->
+    <path
+        android:strokeColor="@color/white"
+        android:strokeWidth="2"
+        android:pathData="M50,80 L150,80" />
+    <path
+        android:strokeColor="@color/white"
+        android:strokeWidth="2"
+        android:pathData="M50,120 L150,120" />
+</vector>

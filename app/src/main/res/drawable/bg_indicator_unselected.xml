@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- 未选中状态的颜色 -->
+    <solid android:color="@color/tab_unselected" />
+    <!-- 圆形大小（与代码中设置的size一致） -->
+    <size
+        android:width="8dp"
+        android:height="8dp" />
+</shape>

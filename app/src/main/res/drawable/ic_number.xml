@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 途迹号图标 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/secondary_text"
+        android:pathData="M11.5,9L13,9v6h-1.5zM9,9L6,9v6h1.5v-2h1.1L8.5,9zM15.5,9h-1.2l-1.7,6h1.7l0.4,-1.3h1.7l0.4,1.3h1.7l-1.7,-6zM15.1,12.5l0.5,-1.6 0.5,1.6z" />
+</vector>

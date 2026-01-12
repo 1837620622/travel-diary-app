@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认头像 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- 外圈 -->
+    <circle
+        cx="60"
+        cy="60"
+        r="60"
+        android:fillColor="@color/primary_light" />
+
+    <!-- 头部 -->
+    <circle
+        cx="60"
+        cy="40"
+        r="20"
+        android:fillColor="@color/white" />
+
+    <!-- 身体 -->
+    <ellipse
+        cx="60"
+        cy="90"
+        rx="25"
+        ry="30"
+        android:fillColor="@color/white" />
+
+    <!-- 眼睛 -->
+    <circle
+        cx="50"
+        cy="35"
+        r="4"
+        android:fillColor="@color/primary_color" />
+    <circle
+        cx="70"
+        cy="35"
+        r="4"
+        android:fillColor="@color/primary_color" />
+
+    <!-- 嘴巴 -->
+    <path
+        android:strokeColor="@color/primary_color"
+        android:strokeWidth="2"
+        android:pathData="M50,50 Q60,60 70,50" />
+</vector>
