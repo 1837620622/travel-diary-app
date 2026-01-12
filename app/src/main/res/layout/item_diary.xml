@@ -4,7 +4,6 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
@@ -23,30 +22,16 @@
             android:background="@color/gray_200"
             android:src="@drawable/ic_default_cover"/>
 
-        <!-- 分类标签 -->
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:text="分类"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_tag"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"/>
-
         <!-- 标题 -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_below="@id/iv_cover"
             android:layout_marginTop="8dp"
             android:text="日记标题"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textColor="@color/primary_text"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -79,7 +64,22 @@
                 android:layout_height="wrap_content"
                 android:text="时间"
                 android:textSize="12sp"
-                android:textColor="@color/text_hint"/>
+                android:textColor="@color/text_hint" />
+
+            <!-- 分类标签 -->
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:text="分类"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/bg_tag"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"/>
 
         </LinearLayout>
 

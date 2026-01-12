@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.traildiary.R;
 import com.example.traildiary.activity.NotebookDetailActivity;
 import com.example.traildiary.activity.NotebookSettingActivity;
@@ -78,17 +79,17 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookAdapter.ViewHo
         
         // 判断是否为自定义封面（文件路径以/开头）
         if (coverPath != null && coverPath.startsWith("/")) {
-            // 自定义封面：从文件加载图片
-            try {
-                Bitmap bitmap = BitmapFactory.decodeFile(coverPath);
-                if (bitmap != null) {
-                    holder.ivCover.setImageBitmap(bitmap);
-                } else {
-                    // 文件不存在或无法解码，使用默认封面
-                    holder.ivCover.setImageResource(CoverPagerAdapter.getCoverResourceId(null));
-                }
-            } catch (Exception e) {
-                Log.e("NotebookAdapter", "加载自定义封面失败: " + e.getMessage());
+            // 自定义封面：使用Glide从文件加载图片
+            Log.d("NotebookAdapter", "加载自定义封面文件: " + coverPath);
+            java.io.File coverFile = new java.io.File(coverPath);
+            if (coverFile.exists()) {
+                Glide.with(context)
+                        .load(coverFile)
+                        .centerCrop()
+                        .into(holder.ivCover);
+            } else {
+                // 文件不存在，使用默认封面
+                Log.w("NotebookAdapter", "封面文件不存在: " + coverPath);
                 holder.ivCover.setImageResource(CoverPagerAdapter.getCoverResourceId(null));
             }
         } else {

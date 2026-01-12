@@ -18,6 +18,7 @@ import com.example.traildiary.adapter.CoverPagerAdapter;
 import com.example.traildiary.adapter.DiaryListAdapter;
 import com.example.traildiary.adapter.NotebookAdapter;
 import com.example.traildiary.database.DiaryDAO;
+import com.example.traildiary.database.FavoriteDAO;
 import com.example.traildiary.database.NotebookDAO;
 import com.example.traildiary.database.UserDAO;
 import com.example.traildiary.model.Diary;
@@ -34,8 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView ivBack, ivCardAvatar;
     private TextView tvEdit, tvCardNickname, tvCardTrailNumber, tvCardSignature;
     private TextView tvDiaryCount, tvDiaryNumber;
-    private TextView tabDiary, tabNotebook;
-    private View indicatorDiary, indicatorNotebook;
+    private TextView tabDiary, tabNotebook, tabFavorite;
+    private View indicatorDiary, indicatorNotebook, indicatorFavorite;
     private RecyclerView rvContent;
     private ViewPager viewPager;
 
@@ -43,16 +44,19 @@ public class HomeActivity extends AppCompatActivity {
     private UserDAO userDAO;
     private DiaryDAO diaryDAO;
     private NotebookDAO notebookDAO;
+    private FavoriteDAO favoriteDAO;
 
     private DiaryListAdapter diaryAdapter;
     private NotebookAdapter notebookAdapter;
     private CoverPagerAdapter coverPagerAdapter;
 
     private List<Diary> diaryList = new ArrayList<>();
+    private List<Diary> favoriteList = new ArrayList<>();
     private List<Notebook> notebookList = new ArrayList<>();
     private List<String> coverImages = new ArrayList<>();
 
-    private boolean isDiaryTabSelected = true;
+    // 0: 日记, 1: 日记本, 2: 收藏
+    private int currentTab = 0;
     private int currentUserId;
 
     @Override
@@ -79,8 +83,10 @@ public class HomeActivity extends AppCompatActivity {
         tvCardSignature = findViewById(R.id.tv_card_signature);
         tabDiary = findViewById(R.id.tab_diary);
         tabNotebook = findViewById(R.id.tab_notebook);
+        tabFavorite = findViewById(R.id.tab_favorite);
         indicatorDiary = findViewById(R.id.indicator_diary);
         indicatorNotebook = findViewById(R.id.indicator_notebook);
+        indicatorFavorite = findViewById(R.id.indicator_favorite);
         tvDiaryCount = findViewById(R.id.tv_diary_count);
         tvDiaryNumber = findViewById(R.id.tv_diary_number);
         rvContent = findViewById(R.id.rv_content);
@@ -94,6 +100,7 @@ public class HomeActivity extends AppCompatActivity {
         userDAO = new UserDAO(this);
         diaryDAO = new DiaryDAO(this);
         notebookDAO = new NotebookDAO(this);
+        favoriteDAO = new FavoriteDAO(this);
 
         currentUserId = spUtil.getCurrentUserId();
 
@@ -179,6 +186,10 @@ public class HomeActivity extends AppCompatActivity {
         if (tabNotebook != null) {
             tabNotebook.setOnClickListener(v -> switchToNotebookTab());
         }
+
+        if (tabFavorite != null) {
+            tabFavorite.setOnClickListener(v -> switchToFavoriteTab());
+        }
     }
 
     private void loadUserData() {
@@ -261,20 +272,32 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    private void loadFavoriteData() {
+        if (currentUserId != -1) {
+            favoriteList.clear();
+            // 获取用户收藏的日记
+            favoriteList.addAll(favoriteDAO.getFavoritesByUserId(currentUserId));
+        }
+    }
+
     private void switchToDiaryTab() {
-        if (!isDiaryTabSelected) {
-            isDiaryTabSelected = true;
+        if (currentTab != 0) {
+            currentTab = 0;
+            // 更新标签颜色
             tabDiary.setTextColor(getResources().getColor(R.color.tab_selected));
             tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
+            tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
+            // 更新指示器
             indicatorDiary.setBackgroundColor(getResources().getColor(R.color.tab_selected));
             indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
             // 切换内容显示
             rvContent.setLayoutManager(new GridLayoutManager(this, 2));
             rvContent.setAdapter(diaryAdapter);
             tvDiaryCount.setText("全部");
+            tvDiaryNumber.setText("." + diaryList.size());
 
-            // 在日记标签下隐藏ViewPager
             if (viewPager != null) {
                 viewPager.setVisibility(View.GONE);
             }
@@ -282,19 +305,59 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void switchToNotebookTab() {
-        if (isDiaryTabSelected) {
-            isDiaryTabSelected = false;
+        if (currentTab != 1) {
+            currentTab = 1;
+            // 更新标签颜色
             tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
             tabNotebook.setTextColor(getResources().getColor(R.color.tab_selected));
+            tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
+            // 更新指示器
             indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
             indicatorNotebook.setBackgroundColor(getResources().getColor(R.color.tab_selected));
+            indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
             // 切换内容显示
             rvContent.setLayoutManager(new GridLayoutManager(this, 2));
             rvContent.setAdapter(notebookAdapter);
             tvDiaryCount.setText("日记本");
+            tvDiaryNumber.setText("." + notebookList.size());
 
-            // 在日记本标签下显示ViewPager
+            if (viewPager != null) {
+                viewPager.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void switchToFavoriteTab() {
+        if (currentTab != 2) {
+            currentTab = 2;
+            // 更新标签颜色
+            tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
+            tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
+            tabFavorite.setTextColor(getResources().getColor(R.color.tab_selected));
+            // 更新指示器
+            indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            indicatorFavorite.setBackgroundColor(getResources().getColor(R.color.tab_selected));
+
+            // 加载收藏数据
+            loadFavoriteData();
+
+            // 创建收藏日记适配器
+            DiaryListAdapter favoriteAdapter = new DiaryListAdapter(this, favoriteList);
+            favoriteAdapter.setOnItemClickListener(diary -> {
+                // 点击收藏的日记 - 跳转到日记详情页
+                Intent intent = new Intent(HomeActivity.this, DiaryDetailActivity.class);
+                intent.putExtra("diary_id", diary.getDiaryId());
+                startActivity(intent);
+            });
+
+            // 切换内容显示
+            rvContent.setLayoutManager(new GridLayoutManager(this, 2));
+            rvContent.setAdapter(favoriteAdapter);
+            tvDiaryCount.setText("收藏");
+            tvDiaryNumber.setText("." + favoriteList.size());
+
             if (viewPager != null) {
                 viewPager.setVisibility(View.GONE);
             }
@@ -308,12 +371,21 @@ public class HomeActivity extends AppCompatActivity {
         loadUserData();
         loadDiaryData();
         loadNotebookData();
+        loadFavoriteData();
 
         // 根据当前选中的标签刷新对应内容
-        if (isDiaryTabSelected) {
-            diaryAdapter.notifyDataSetChanged();
-        } else {
-            notebookAdapter.notifyDataSetChanged();
+        switch (currentTab) {
+            case 0:
+                diaryAdapter.notifyDataSetChanged();
+                tvDiaryNumber.setText("." + diaryList.size());
+                break;
+            case 1:
+                notebookAdapter.notifyDataSetChanged();
+                tvDiaryNumber.setText("." + notebookList.size());
+                break;
+            case 2:
+                switchToFavoriteTab();
+                break;
         }
     }
 }

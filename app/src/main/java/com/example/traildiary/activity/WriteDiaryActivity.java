@@ -403,7 +403,7 @@ public class WriteDiaryActivity extends AppCompatActivity {
         }
         String content = contentBuilder.toString();
 
-        // 验证：内容或图片至少有一个
+        // 验证：必须插入至少一张图片
         boolean hasImages = false;
         for (DiaryContentItem item : contentItems) {
             if (item.getType() == DiaryContentItem.Type.IMAGE &&
@@ -413,8 +413,8 @@ public class WriteDiaryActivity extends AppCompatActivity {
             }
         }
 
-        if (!ValidationUtil.isDiaryContentValid(content) && !hasImages) {
-            Toast.makeText(this, "请输入日记内容或添加图片", Toast.LENGTH_SHORT).show();
+        if (!hasImages) {
+            Toast.makeText(this, "请至少添加一张图片", Toast.LENGTH_SHORT).show();
             return;
         }
 

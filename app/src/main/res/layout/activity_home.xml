@@ -166,6 +166,17 @@
                     android:textColor="@color/tab_unselected"
                     android:gravity="center"
                     android:paddingVertical="8dp" />
+
+                <TextView
+                    android:id="@+id/tab_favorite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="收藏"
+                    android:textSize="16sp"
+                    android:textColor="@color/tab_unselected"
+                    android:gravity="center"
+                    android:paddingVertical="8dp" />
             </LinearLayout>
 
             <!-- 下划线指示器 -->
@@ -183,6 +194,13 @@
 
                 <View
                     android:id="@+id/indicator_notebook"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"/>
+
+                <View
+                    android:id="@+id/indicator_favorite"
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layout_weight="1"
@@ -215,13 +233,17 @@
             </LinearLayout>
 
             <!-- 日记/日记本列表 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_content"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:clipToPadding="false"
-                android:padding="16dp"/>
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:padding="16dp"/>
+            </ScrollView>
         </LinearLayout>
 
     </LinearLayout>
