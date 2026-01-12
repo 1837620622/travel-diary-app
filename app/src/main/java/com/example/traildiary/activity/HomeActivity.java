@@ -281,86 +281,80 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void switchToDiaryTab() {
-        if (currentTab != 0) {
-            currentTab = 0;
-            // 更新标签颜色
-            tabDiary.setTextColor(getResources().getColor(R.color.tab_selected));
-            tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
-            tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
-            // 更新指示器
-            indicatorDiary.setBackgroundColor(getResources().getColor(R.color.tab_selected));
-            indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        currentTab = 0;
+        // 更新标签颜色
+        tabDiary.setTextColor(getResources().getColor(R.color.tab_selected));
+        tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
+        tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
+        // 更新指示器
+        indicatorDiary.setBackgroundColor(getResources().getColor(R.color.tab_selected));
+        indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-            // 切换内容显示
-            rvContent.setLayoutManager(new GridLayoutManager(this, 2));
-            rvContent.setAdapter(diaryAdapter);
-            tvDiaryCount.setText("全部");
-            tvDiaryNumber.setText("." + diaryList.size());
+        // 切换内容显示
+        rvContent.setLayoutManager(new GridLayoutManager(this, 2));
+        rvContent.setAdapter(diaryAdapter);
+        tvDiaryCount.setText("全部");
+        tvDiaryNumber.setText("." + diaryList.size());
 
-            if (viewPager != null) {
-                viewPager.setVisibility(View.GONE);
-            }
+        if (viewPager != null) {
+            viewPager.setVisibility(View.GONE);
         }
     }
 
     private void switchToNotebookTab() {
-        if (currentTab != 1) {
-            currentTab = 1;
-            // 更新标签颜色
-            tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
-            tabNotebook.setTextColor(getResources().getColor(R.color.tab_selected));
-            tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
-            // 更新指示器
-            indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            indicatorNotebook.setBackgroundColor(getResources().getColor(R.color.tab_selected));
-            indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        currentTab = 1;
+        // 更新标签颜色
+        tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
+        tabNotebook.setTextColor(getResources().getColor(R.color.tab_selected));
+        tabFavorite.setTextColor(getResources().getColor(R.color.tab_unselected));
+        // 更新指示器
+        indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        indicatorNotebook.setBackgroundColor(getResources().getColor(R.color.tab_selected));
+        indicatorFavorite.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-            // 切换内容显示
-            rvContent.setLayoutManager(new GridLayoutManager(this, 2));
-            rvContent.setAdapter(notebookAdapter);
-            tvDiaryCount.setText("日记本");
-            tvDiaryNumber.setText("." + notebookList.size());
+        // 切换内容显示
+        rvContent.setLayoutManager(new GridLayoutManager(this, 2));
+        rvContent.setAdapter(notebookAdapter);
+        tvDiaryCount.setText("日记本");
+        tvDiaryNumber.setText("." + notebookList.size());
 
-            if (viewPager != null) {
-                viewPager.setVisibility(View.GONE);
-            }
+        if (viewPager != null) {
+            viewPager.setVisibility(View.GONE);
         }
     }
 
     private void switchToFavoriteTab() {
-        if (currentTab != 2) {
-            currentTab = 2;
-            // 更新标签颜色
-            tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
-            tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
-            tabFavorite.setTextColor(getResources().getColor(R.color.tab_selected));
-            // 更新指示器
-            indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            indicatorFavorite.setBackgroundColor(getResources().getColor(R.color.tab_selected));
+        currentTab = 2;
+        // 更新标签颜色
+        tabDiary.setTextColor(getResources().getColor(R.color.tab_unselected));
+        tabNotebook.setTextColor(getResources().getColor(R.color.tab_unselected));
+        tabFavorite.setTextColor(getResources().getColor(R.color.tab_selected));
+        // 更新指示器
+        indicatorDiary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        indicatorNotebook.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        indicatorFavorite.setBackgroundColor(getResources().getColor(R.color.tab_selected));
 
-            // 加载收藏数据
-            loadFavoriteData();
+        // 加载收藏数据
+        loadFavoriteData();
 
-            // 创建收藏日记适配器
-            DiaryListAdapter favoriteAdapter = new DiaryListAdapter(this, favoriteList);
-            favoriteAdapter.setOnItemClickListener(diary -> {
-                // 点击收藏的日记 - 跳转到日记详情页
-                Intent intent = new Intent(HomeActivity.this, DiaryDetailActivity.class);
-                intent.putExtra("diary_id", diary.getDiaryId());
-                startActivity(intent);
-            });
+        // 创建收藏日记适配器
+        DiaryListAdapter favoriteAdapter = new DiaryListAdapter(this, favoriteList);
+        favoriteAdapter.setOnItemClickListener(diary -> {
+            // 点击收藏的日记 - 跳转到日记详情页
+            Intent intent = new Intent(HomeActivity.this, DiaryDetailActivity.class);
+            intent.putExtra("diary_id", diary.getDiaryId());
+            startActivity(intent);
+        });
 
-            // 切换内容显示
-            rvContent.setLayoutManager(new GridLayoutManager(this, 2));
-            rvContent.setAdapter(favoriteAdapter);
-            tvDiaryCount.setText("收藏");
-            tvDiaryNumber.setText("." + favoriteList.size());
+        // 切换内容显示
+        rvContent.setLayoutManager(new GridLayoutManager(this, 2));
+        rvContent.setAdapter(favoriteAdapter);
+        tvDiaryCount.setText("收藏");
+        tvDiaryNumber.setText("." + favoriteList.size());
 
-            if (viewPager != null) {
-                viewPager.setVisibility(View.GONE);
-            }
+        if (viewPager != null) {
+            viewPager.setVisibility(View.GONE);
         }
     }
 
